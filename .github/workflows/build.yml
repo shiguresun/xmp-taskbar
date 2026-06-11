@@ -28,3 +28,4 @@ jobs:
       with:
         name: xmp-taskbar-dll
         path: xmp-taskbar.dll
+
