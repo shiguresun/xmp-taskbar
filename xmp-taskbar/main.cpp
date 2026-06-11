@@ -25,7 +25,7 @@ static BOOL WINAPI DSP_SetConfig(void *inst, void *config, DWORD size);
 
 static XMPDSP dsp = {
     XMPDSP_FLAG_NODSP,
-    "Taskbar Progress (Win10 Fixed)",
+    "Taskbar Progress",
     DSP_About,
     DSP_New,
     DSP_Free,
@@ -37,9 +37,14 @@ static XMPDSP dsp = {
 
 static void WINAPI DSP_About(HWND win)
 {
-    char mBoxChar[256];
-    sprintf(mBoxChar, "Taskbar Progress (Win10 Fixed)\nBuilt: %s %s", __DATE__, __TIME__);
-    MessageBox(win, mBoxChar, "About Plugin", MB_ICONINFORMATION);
+	char mBoxChar[256];
+	sprintf(mBoxChar, "Taskbar Progress v0.3.1 for XMPlay\n"
+		"Copyright (C) 2026 Grin (original by 2016 FIX94)\n"
+		"Built: %s %s", __DATE__, __TIME__);
+	MessageBox(win,
+		mBoxChar,
+		"About Plugin",
+		MB_ICONINFORMATION);
 }
 
 static const char *WINAPI DSP_GetDescription(void *inst)
@@ -121,7 +126,7 @@ static void WINAPI DSP_Free(void *inst)
     {
         EnterCriticalSection(&section);
         m_pTaskBarlist->SetProgressState(xmpwin, TBPF_NOPROGRESS);
-        m_pTaskTaskBarlist->Release();
+        m_pTaskBarlist->Release();
         m_pTaskBarlist = NULL;
         LeaveCriticalSection(&section);
     }
