@@ -37,11 +37,14 @@ static XMPDSP dsp = {
 
 static void WINAPI DSP_About(HWND win)
 {
-sprintf(mBoxChar, "Taskbar Progress v0.3.1 for XMPlay\n"
-		"Copyright (C) 2026 Grin\n"
-	    "Built: %s %s", __DATE__, __TIME__"\n"
-		"original code by FIX94");
-MessageBox(win, mBoxChar, "About Plugin", MB_ICONINFORMATION);
+	char mBoxChar[256];
+	sprintf(mBoxChar, "Taskbar Progress v0.3.1 for XMPlay\n"
+		"Copyright (C) 2026 Grin (original by 2016 FIX94)\n"
+		"Built: %s %s", __DATE__, __TIME__);
+	MessageBox(win,
+		mBoxChar,
+		"About Plugin",
+		MB_ICONINFORMATION);
 }
 
 static const char *WINAPI DSP_GetDescription(void *inst)
