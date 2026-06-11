@@ -1,0 +1,30 @@
+name: Build XMPlay Taskbar Plugin
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Install MinGW
+      uses: egor-tensin/setup-mingw@v2
+      with:
+        platform: x64
+
+    - name: Build DLL
+      run: |
+        gcc -shared -o xmp-taskbar.dll xmp-taskbar.c -lole32 -luuid -lcomctl32 -static
+
+    - name: Upload DLL
+      uses: actions/upload-artifact@v3
+      with:
+        name: xmp-taskbar-dll
+        path: xmp-taskbar.dll
