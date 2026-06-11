@@ -39,8 +39,9 @@ static void WINAPI DSP_About(HWND win)
 {
 sprintf(mBoxChar, "Taskbar Progress v0.3.1 for XMPlay\n"
 		"Copyright (C) 2026 Grin\n"
-	    "original code by FIX94\n"
-		"Built: %s %s", __DATE__, __TIME__);
+	    "Built: %s %s", __DATE__, __TIME__"\n"
+		"original code by FIX94");
+	MessageBox(win, mBoxChar, "About Plugin", MB_ICONINFORMATION);
 }
 
 static const char *WINAPI DSP_GetDescription(void *inst)
