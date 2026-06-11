@@ -14,10 +14,12 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Set up MSVC environment
+    - name: Set up MSVC environment (Win32)
       uses: ilammy/msvc-dev-cmd@v1
+      with:
+        arch: x86
 
-    - name: Build DLL with MSVC
+    - name: Build DLL with MSVC (Win32)
       run: |
         cl /LD main.cpp /Fe:xmp-taskbar.dll ole32.lib uuid.lib comctl32.lib user32.lib /link /DEF:xmpdsp.def /MACHINE:X86
 
