@@ -121,7 +121,7 @@ static void WINAPI DSP_Free(void *inst)
     {
         EnterCriticalSection(&section);
         m_pTaskBarlist->SetProgressState(xmpwin, TBPF_NOPROGRESS);
-        m_pTaskTaskBarlist->Release();
+        m_pTaskBarlist->Release();
         m_pTaskBarlist = NULL;
         LeaveCriticalSection(&section);
     }
