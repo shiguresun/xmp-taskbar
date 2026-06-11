@@ -1,4 +1,4 @@
-name: Build XMPlay Taskbar Plugin
+name: Build XMPlay Taskbar Plugin (Win10 Fixed)
 
 on:
   push:
@@ -11,7 +11,7 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - name: Checkout
+    - name: Checkout repository
       uses: actions/checkout@v3
 
     - name: Install MinGW
@@ -21,9 +21,9 @@ jobs:
 
     - name: Build DLL
       run: |
-        gcc -shared -o xmp-taskbar.dll xmp-taskbar.c -lole32 -luuid -lcomctl32 -static
+        gcc -shared -o xmp-taskbar.dll main.cpp -lole32 -luuid -lcomctl32 -static
 
-    - name: Upload DLL
+    - name: Upload DLL artifact
       uses: actions/upload-artifact@v3
       with:
         name: xmp-taskbar-dll
