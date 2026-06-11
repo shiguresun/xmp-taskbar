@@ -19,7 +19,7 @@ jobs:
 
     - name: Build DLL with MSVC
       run: |
-        cl /LD xmp-taskbar.cpp /Fe:xmp-taskbar.dll ole32.lib uuid.lib comctl32.lib
+        cl /LD main.cpp /Fe:xmp-taskbar.dll ole32.lib uuid.lib comctl32.lib
 
     - name: Upload DLL artifact
       uses: actions/upload-artifact@v4
